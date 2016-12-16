@@ -1,0 +1,92 @@
+ <meta charset="utf-8">
+ <script>
+
+ do {var a = parseInt(prompt("Тип рулетки: (1) - 36 чисел, отслеживаем 0; (2) - изучаем последовательность 0, красного и чёрного; (3) - выход."));
+	if ((a == 1) || (a == 2) || (a == 3)) {
+		break;
+		}
+
+	} while (true)
+
+	if(a == 1) {
+
+		var arr = [];
+ 		do {var rounds = Math.round(parseInt(prompt("Введите число раундов: ")));
+ 		} while (isNaN(rounds) || rounds <=0);
+		var zeros = 0;
+ 		var i = 0;
+
+ 		for(i = 0; i < rounds; i++) {
+ 		arr.push(Math.round(Math.random()*36));
+ 	
+		}
+
+ 		alert(arr);
+
+ 		for(i=0; i < arr.length; i++) {
+ 			if (arr[i] == 0) {
+ 					zeros++
+ 			}
+ 		}
+
+ 		alert("Частота выпадения зеро: " + zeros/arr.length*100 + "%");
+			
+     
+    }
+ 
+ 	if(a == 2) {
+
+ 		var arr = [];
+ 		do {var rounds = Math.round(parseInt(prompt("Введите число раундов: ")));
+ 		} while (isNaN(rounds) || rounds <=0);
+ 		var red = 0; 	// мб и не пригодится
+ 		var bla = 0;	// мб и не пригодится
+ 		var zer = 0;	// мб и не пригодится
+ 		var redrow = 0;
+ 		var maxredrow = 0;
+ 		var i = 0;
+
+ 		for(i = 0; i < rounds; i++) {
+
+ 			var o = Math.round(Math.round(Math.random()*36));
+ 		
+ 			if (o == 0) {
+ 			zer = zer + 1;
+ 			arr.push(o);
+ 			} else if (o % 2) {
+ 			red = red + 1;
+ 			arr.push(o + ", к.");
+ 			} else { bla = bla + 1;
+ 			arr.push(o + ", ч.");
+ 			}
+ 	
+ 		}
+
+ 		alert(arr);
+ 		alert("Нулей - " + zer + ", красных - " + red + ", чёрных - " + bla);
+		
+		for(i = 0; i < rounds; i++) {
+			
+ 			
+ 			if ((parseFloat(arr[i]) % 2) && (parseFloat(arr[i]) != 0)) {
+ 					redrow++;
+ 				
+ 			}	else {
+ 				if (redrow > maxredrow) {
+ 					maxredrow = redrow;
+ 					redrow = 0;
+ 				}
+ 			}
+		}
+
+ 		alert("Максимальная длина последовательности красных: " + maxredrow)
+
+ 	} else if (a == 3) {
+
+ 	alert("Ну и ладно, не больно-то и хотелось!");
+ 	
+ 	}
+
+ alert("Всё!");
+
+ </script>
